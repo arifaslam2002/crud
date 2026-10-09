@@ -19,10 +19,21 @@ export const createTask = async (req, res) => {
     const Task = await Task.create({
       title,
       description,
-      user_id:req.user.userId
+      user_id: req.user.userId,
     });
     return res.status(201).json({
-        message:"task created "
-    })
-  } catch (error) {}
+      message: "task created ",
+      task,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
+export const updateTask = async (req,res) =>{
+    const {id} = req.params;
+    const {title,description} = req.body;
+    const task = await Task.findOneAndUpdate({
+        _id:id,
+        user_id:req.user.userId
+    })
+}
