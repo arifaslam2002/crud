@@ -1,5 +1,4 @@
 import Task from "../models/Task.js";
-import Task from "../models/Task.js";
 export const getTasks = async (req, res) => {
   try {
     const filter =
